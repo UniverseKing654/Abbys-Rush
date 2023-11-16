@@ -6,6 +6,8 @@ public class AtributosPickaxe : MonoBehaviour
 {
     private float lifeSpan = 0.2f;
     public int atkPower = 1;
+
+    public int playerNumber;
     [SerializeField] bool permanente = false;
 
     private void Start()
