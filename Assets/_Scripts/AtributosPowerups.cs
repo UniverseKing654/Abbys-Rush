@@ -10,9 +10,9 @@ public class AtributosPowerups : MonoBehaviour
     public bool emeraldPower = false;
 
 
+    private IEnumerator coroutine;
 
-
-    public void UsarGema()
+    public void UsarGema(int playerNumber)
     {
 
         Debug.Log("Skill activada");
@@ -39,15 +39,24 @@ public class AtributosPowerups : MonoBehaviour
     {
         
         //Inserte poder bola de fuego
+        Debug.Log("RubyFlames");
+        coroutine = RubyWearOff(5f);
+        StartCoroutine(coroutine);
         
+    }
+
+    IEnumerator RubyWearOff(float time)
+    {   
+        GetComponent<MovimientoJugador>().buff = true;
+        yield return new WaitForSeconds(time);
+        GetComponent<MovimientoJugador>().buff = false;
         rubyPower = false;
-        
     }
 
 
     void SapphireGrowth()
     {
-        //Inserte expansión
+        //Inserte expansiï¿½n
         
         sapphirePower= false;
 
@@ -58,11 +67,17 @@ public class AtributosPowerups : MonoBehaviour
     void EmeraldPoison()
     {
         
-        //Inserte slow
+        Debug.Log("EmeraldPoison");
+        coroutine = EmeraldWearOff(5f);
+        StartCoroutine(coroutine);
+    }
 
-        emeraldPower= false;
-        
-      
+    IEnumerator RubyWearOff(float time)
+    {   
+        GetComponent<MovimientoJugador>().debuff = true;
+        yield return new WaitForSeconds(time);
+        GetComponent<MovimientoJugador>().debuff = false;
+        emeraldPower = false;
     }
 
 

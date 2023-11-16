@@ -9,6 +9,8 @@ public class MovimientoJugador : MonoBehaviour
 
     public int playerNumber;
     public int playerHP;
+    public bool buff = false;
+    public bool debuff = false;
 
     
 
@@ -99,7 +101,7 @@ public class MovimientoJugador : MonoBehaviour
 
         if (context.performed)
         {
-            FindObjectOfType<Minar>().Pickaxe(isFacingRight, horizontal, vertical, tf);
+            FindObjectOfType<Minar>().Pickaxe(isFacingRight, horizontal, vertical, tf, buff, debuff);
 
         }
 
@@ -111,8 +113,8 @@ public class MovimientoJugador : MonoBehaviour
     {
         if (context.performed)
         {
-            //Rellenar de ahí con los valores necesarios
-            FindObjectOfType<AtributosPowerups>().UsarGema();
+            //Rellenar de ahï¿½ con los valores necesarios
+            FindObjectOfType<AtributosPowerups>().UsarGema(playerNumber);
 
         }
     }
