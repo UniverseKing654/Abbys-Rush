@@ -10,9 +10,13 @@ public class Minar : MonoBehaviour
 
     public GameObject pickaxePrefab;
 
+    private GameObject pickaxe;
+
+    private Vector3 picktransformspawn = new Vector3(0f, 0f, 0f);
 
 
-    public void Pickaxe(bool isFacingRight, float horizontal, float vertical, Transform tf)
+
+    public void Pickaxe(bool isFacingRight, float horizontal, float vertical, Transform tf, bool buff, bool debuff)
     {
         if (Time.time - anteriorPickaxe < cooldownPickaxe)
         {
@@ -22,26 +26,38 @@ public class Minar : MonoBehaviour
 
         if (vertical < 0)
         {
-            Vector3 picktransformspawn = new Vector3(tf.position.x, tf.position.y - 1f, 0f);
-            GameObject PickaxeInst = Instantiate(pickaxePrefab, picktransformspawn, Quaternion.identity);
-            anteriorPickaxe = Time.time;
+            picktransformspawn = new Vector3(tf.position.x, tf.position.y - 1f, 0f);
+            
         }
-
-
 
         if (isFacingRight && vertical >= 0)
         {
-            Vector3 picktransformspawn = new Vector3(tf.position.x + 1f, tf.position.y, 0f);
-            GameObject PickaxeInst = Instantiate(pickaxePrefab, picktransformspawn, Quaternion.identity);
-            anteriorPickaxe = Time.time;
+            picktransformspawn = new Vector3(tf.position.x + 1f, tf.position.y, 0f);
+            
         }
 
         else if (!isFacingRight && vertical >= 0)
         {
-            Vector3 picktransformspawn = new Vector3(tf.position.x - 1f, tf.position.y, 0f);
-            GameObject PickaxeInst = Instantiate(pickaxePrefab, picktransformspawn, Quaternion.identity);
-            anteriorPickaxe = Time.time;
+            picktransformspawn = new Vector3(tf.position.x - 1f, tf.position.y, 0f);
+            
         }
+
+        GameObject PickaxeInst = Instantiate(pickaxe, picktransformspawn, Quaternion.identity);
+
+        if (buff)
+        {
+            PickaxeInst.GetComponent<AtributosPickaxe>().atkPower = 2;
+        }
+
+        else if (debuff)
+        {
+            PickaxeInst.GetComponent<AtributosPickaxe>().atkPower = 0;
+        }
+
+
+        anteriorPickaxe = Time.time;
+
+
 
 
 
