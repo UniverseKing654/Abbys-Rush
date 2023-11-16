@@ -9,10 +9,12 @@ public class AtributosPowerups : MonoBehaviour
     public bool sapphirePower = false;
     public bool emeraldPower = false;
 
+    public GameObject pickaxePrefab;
+
 
     private IEnumerator coroutine;
 
-    public void UsarGema(int playerNumber)
+    public void UsarGema(int playerNumber, Transform tf)
     {
 
         Debug.Log("Skill activada");
@@ -23,7 +25,7 @@ public class AtributosPowerups : MonoBehaviour
 
         if (sapphirePower == true)
         {
-            SapphireGrowth();
+            SapphireGrowth(tf);
         }
 
         if (emeraldPower == true)
@@ -54,9 +56,30 @@ public class AtributosPowerups : MonoBehaviour
     }
 
 
-    void SapphireGrowth()
+    void SapphireGrowth(Transform tf)
     {
         //Inserte expansi�n
+
+        Debug.Log("SapphireGrowth");
+
+        Vector3 picktransformspawn1 = new Vector3(tf.position.x, tf.position.y - 1f, 0f);
+        Vector3 picktransformspawn2 = new Vector3(tf.position.x, tf.position.y - 3f, 0f);
+        Vector3 picktransformspawn3 = new Vector3(tf.position.x, tf.position.y - 5f, 0f);
+        Vector3 picktransformspawn4 = new Vector3(tf.position.x, tf.position.y - 7f, 0f);
+        Vector3 picktransformspawn5 = new Vector3(tf.position.x, tf.position.y - 9f, 0f);
+
+
+        GameObject PickaxeInst1 = Instantiate(pickaxePrefab, picktransformspawn1, Quaternion.identity);
+        PickaxeInst1.GetComponent<AtributosPickaxe>().atkPower = 3;
+        GameObject PickaxeInst2 = Instantiate(pickaxePrefab, picktransformspawn2, Quaternion.identity);
+        PickaxeInst2.GetComponent<AtributosPickaxe>().atkPower = 3;
+        GameObject PickaxeInst3 = Instantiate(pickaxePrefab, picktransformspawn3, Quaternion.identity);
+        PickaxeInst3.GetComponent<AtributosPickaxe>().atkPower = 3;
+        GameObject PickaxeInst4 = Instantiate(pickaxePrefab, picktransformspawn4, Quaternion.identity);
+        PickaxeInst4.GetComponent<AtributosPickaxe>().atkPower = 3;
+        GameObject PickaxeInst5 = Instantiate(pickaxePrefab, picktransformspawn5, Quaternion.identity);
+        PickaxeInst5.GetComponent<AtributosPickaxe>().atkPower = 3;
+
         
         sapphirePower= false;
 

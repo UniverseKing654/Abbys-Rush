@@ -114,7 +114,7 @@ public class MovimientoJugador : MonoBehaviour
         if (context.performed)
         {
             //Rellenar de ah� con los valores necesarios
-            FindObjectOfType<AtributosPowerups>().UsarGema(playerNumber);
+            FindObjectOfType<AtributosPowerups>().UsarGema(playerNumber, tf);
 
         }
     }
