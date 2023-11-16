@@ -28,7 +28,7 @@ public class AtributosPowerups : MonoBehaviour
 
         if (emeraldPower == true)
         {
-            EmeraldPoison();
+            EmeraldPoison(playerNumber);
         }
 
     }
@@ -64,19 +64,25 @@ public class AtributosPowerups : MonoBehaviour
 
 
 
-    void EmeraldPoison()
+    void EmeraldPoison(int playerNumber)
     {
         
         Debug.Log("EmeraldPoison");
-        coroutine = EmeraldWearOff(5f);
+        coroutine = EmeraldWearOff(5f, playerNumber);
         StartCoroutine(coroutine);
     }
 
-    IEnumerator RubyWearOff(float time)
+    IEnumerator EmeraldWearOff(float time, int playerNumber)
     {   
-        GetComponent<MovimientoJugador>().debuff = true;
+
+        GameObject player = GameObject.Find("Player" + ((playerNumber%2)+1));
+
+        Debug.Log(playerNumber);
+        Debug.Log("Player" + ((playerNumber%2)+1));
+
+        player.GetComponent<MovimientoJugador>().debuff = true;
         yield return new WaitForSeconds(time);
-        GetComponent<MovimientoJugador>().debuff = false;
+        player.GetComponent<MovimientoJugador>().debuff = false;
         emeraldPower = false;
     }
 

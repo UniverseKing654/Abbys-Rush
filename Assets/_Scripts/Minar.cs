@@ -10,8 +10,6 @@ public class Minar : MonoBehaviour
 
     public GameObject pickaxePrefab;
 
-    private GameObject pickaxe;
-
     private Vector3 picktransformspawn = new Vector3(0f, 0f, 0f);
 
 
@@ -42,7 +40,7 @@ public class Minar : MonoBehaviour
             
         }
 
-        GameObject PickaxeInst = Instantiate(pickaxe, picktransformspawn, Quaternion.identity);
+        GameObject PickaxeInst = Instantiate(pickaxePrefab, picktransformspawn, Quaternion.identity);
 
         if (buff)
         {
