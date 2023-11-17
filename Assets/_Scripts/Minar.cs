@@ -14,7 +14,7 @@ public class Minar : MonoBehaviour
 
 
 
-    public void Pickaxe(bool isFacingRight, float horizontal, float vertical, Transform tf, bool buff, bool debuff)
+    public void Pickaxe(bool isFacingRight, float horizontal, float vertical, Transform tf, bool buff, bool debuff, int playerNumber)
     {
         if (Time.time - anteriorPickaxe < cooldownPickaxe)
         {
@@ -41,6 +41,7 @@ public class Minar : MonoBehaviour
         }
 
         GameObject PickaxeInst = Instantiate(pickaxePrefab, picktransformspawn, Quaternion.identity);
+        PickaxeInst.GetComponent<AtributosPickaxe>().playerNumber = playerNumber;
 
         if (buff)
         {

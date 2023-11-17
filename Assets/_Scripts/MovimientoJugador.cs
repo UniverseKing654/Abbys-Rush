@@ -101,7 +101,7 @@ public class MovimientoJugador : MonoBehaviour
 
         if (context.performed)
         {
-            FindObjectOfType<Minar>().Pickaxe(isFacingRight, horizontal, vertical, tf, buff, debuff);
+            FindObjectOfType<Minar>().Pickaxe(isFacingRight, horizontal, vertical, tf, buff, debuff, playerNumber);
 
         }
 
